@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width ="200px" id="pinterest" src="images.jpeg" alt="pinterest" ></li>
+            <li><a style="color:aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div> 
+</body>
+<script>
+    // document.getElementById('pinterest').onclick = function(){
+    //     alert("clicked")
+    // }
+
+    // document.getElementById('pinterest').addEventListener('click', function(e){
+    //     console.log(e);
+    // })
+    //attachEvent() -> internet exploral
+    //jQuery - on
+
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    //event propagation 
+
+    document.getElementById('images').addEventListener('click', function(e){
+        console.log("clicked inside th ul");
+    }, false)
+
+    // document.getElementById('pinterest').addEventListener('click', function(e){
+    //     console.log("shinchan clicked");
+    //     e.stopPropagation()
+    // }, false)
+
+    document.getElementById('google').addEventListener('click',function(e){
+        e.preventDefault();
+        console.log("google clicked");
+    }, false)
+
+    //spill over
+    document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.parentNode);
+        console.log(e.target.tagName);
+        if( e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode 
+            removeIt.remove()
+        }
+        // let removeIt = e.target.parentNode //li mil gya
+        // removeIt.remove()
+        // removeIt.parentNode.removeChild(removeIt) //li ka parent mtlb ul then uska jo child aya usko remove kro 
+    }, false)
+
+</script>
+</html>
