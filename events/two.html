@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>JavaScript Learning</h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayName = function(){
+        console.log("Nilam");
+    }
+    const changeText = function() {
+        document.querySelector('h1').innerHTML = "this is js code"
+    }
+    setTimeout(sayName, 2000) //reference de rhe execute nahi kr rhe no ()
+    //setTime out perticular time k baad ek hi baar print hoga
+    //setInterval ek erticular time k baad baad print krte rehta h
+    const changeMe = setTimeout(changeText, 2000)
+
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe)
+        console.log("Stopped");
+    })
+</script>
+</html>
